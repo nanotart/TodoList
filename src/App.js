@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ToDoList from './Todolist';
-import { v4 as uuidv4 } from 'uuid' // creates a random id for id handling
+import { v4 as uuidv4 } from 'uuid'; // creates a random id for id handling
+import './App.css';
 
 //
 // This application builds a to-do list.
@@ -61,11 +62,17 @@ function App() {
   return (
     // code fragment so that we can have multiple HTML elements inside the App.js return
     <> 
-      <ToDoList todos={todos} toggleHandler={toggleHandler}/>
-      <input ref={todoName} type="text" />
-      <button onClick={addHandler}>Add ToDo</button>
-      <button onClick={clearHandler}>Clear Completed</button>
-      <div>{todos.filter(todo => !todo.complete).length} left to do</div>
+      <div class="head">
+        <h1>This is a TodoList</h1>
+      </div>
+      
+      <div class="layout">
+        <div>{todos.filter(todo => !todo.complete).length} left to do</div>
+        <input ref={todoName} type="text" />
+        <button onClick={addHandler}>Add ToDo</button>
+        <button onClick={clearHandler}>Clear Completed</button>
+        <ToDoList todos={todos} toggleHandler={toggleHandler}/>
+      </div>
     </>
   )
 }
